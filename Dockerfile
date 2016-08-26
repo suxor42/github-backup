@@ -2,7 +2,7 @@ FROM python:3.5
 
 RUN mkdir -p /usr/src/app
 RUN groupadd -r app && useradd -d /usr/src/app -r -g app app
-RUN chown -R app:app /usr/src/appsss
+RUN chown -R app:app /usr/src/app
 WORKDIR /usr/src/app
 USER app
 
