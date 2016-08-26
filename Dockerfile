@@ -5,10 +5,13 @@ RUN groupadd -r app && useradd -d /usr/src/app -r -g app app
 WORKDIR /usr/src/app
 COPY requirements.txt /usr/src/app/
 RUN pip install --no-cache-dir -r requirements.txt
-RUN chown -R app:app /usr/src/app
 
-USER app
 COPY . /usr/src/app
+COPY .ssh/ /usr/src/app/.ssh
+
+RUN chown -R app:app /usr/src/app
+USER app
+
 
 
 
