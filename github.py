@@ -14,7 +14,7 @@ ghclient = login(username=GITHUB_USER, password=GITHUB_PASSWORD, token=GITHUB_TO
 def get_organisation_repos(organisation):
   organisation = filter(lambda org: org.login == organisation, ghclient.iter_orgs()).__next__()
   repositories = list(organisation.iter_repos())
-  repositories = map(lambda repo: repo.git_url, repositories)
+  repositories = map(lambda repo: repo.ssh_url, repositories)
   return list(repositories)
 
 
