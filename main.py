@@ -8,11 +8,11 @@ import boto3
 
 GITHUB_ORGANIZATION = environ['GITHUB_ORGANIZATION']
 S3_BUCKET = environ['S3_BUCKET']
+S3_REGION = environ['S3_REGION']
 
 
 def clone_repo(dir, repo):
   reponame_pattern = re.compile('.*/(?P<repo_name>.*)\.git$')
-  repo_name = reponame_pattern.match(repo).group('repo_name')
   print(repo)
   call("bash -c \"cd {dir}; git clone {repo}\"".format(dir=dir, repo=repo), shell=True)
 
@@ -24,7 +24,7 @@ def archive(dir, postfix):
 def upload_to_s3(bucket, prefix, file):
   s3 = boto3.resource('s3')
   if bucket not in map(lambda bucket: bucket.name, s3.buckets.all()):
-    s3.create_bucket(Bucket=bucket, CreateBucketConfiguration={'LocationConstraint': 'eu-west-1'})
+    s3.create_bucket(Bucket=bucket, CreateBucketConfiguration={'LocationConstraint': S3_REGION})
   s3.Object(bucket, "%s/%s" % (prefix, file)).put(Body=open(file, 'rb'))
 
 
