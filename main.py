@@ -12,8 +12,6 @@ S3_REGION = environ['S3_REGION']
 
 
 def clone_repo(dir, repo):
-  reponame_pattern = re.compile('.*/(?P<repo_name>.*)\.git$')
-  print(repo)
   call("bash -c \"cd {dir}; git clone {repo}\"".format(dir=dir, repo=repo), shell=True)
 
 
