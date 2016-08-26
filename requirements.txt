@@ -1,0 +1,14 @@
+boto3==1.4.0
+botocore==1.4.49
+docutils==0.12
+gitdb==0.6.4
+github3.py==0.9.5
+GitPython==2.0.8
+jmespath==0.9.0
+pycparser==2.14
+python-dateutil==2.5.3
+requests==2.11.1
+s3transfer==0.1.2
+six==1.10.0
+smmap==0.9.0
+uritemplate.py==2.0.0
